@@ -31,7 +31,7 @@ char *produce_spaces(short size)
     return ret_value;
 }
 
-char *substring(const char *str, unsigned long pos, short length)
+char *sub_string(const char *str, unsigned long pos, short length)
 {
     char *ret_value = (char *) malloc(length + 1);
     memcpy(ret_value, &str[pos], length);
@@ -69,7 +69,7 @@ int running_string(char* str_content, int direction, int step, int how_long)
     for (long i = str_content_length - 1; i >= 0; i--)
     {
         curr_spaces = produce_spaces(i);
-        curr_content = substring(str_content, i, str_content_length - i);
+        curr_content = sub_string(str_content, i, str_content_length - i);
         
         unsigned long whole_content_length = strlen(start_marker) + strlen(curr_content) +
                                              strlen(curr_spaces)  + strlen(end_marker);
@@ -87,6 +87,32 @@ int running_string(char* str_content, int direction, int step, int how_long)
     }
     
     // part2 - spaces + content
+    for (long i = 1; i < str_content_length; i++)
+    {
+        curr_spaces = produce_spaces(i);
+        curr_content = sub_string(str_content, 0, str_content_length - i);
+        
+        unsigned long whole_content_length = strlen(start_marker) + strlen(curr_content) +
+                                             strlen(curr_spaces)  + strlen(end_marker);
+        
+        content_to_print = malloc(whole_content_length + 1);
+        snprintf(content_to_print, whole_content_length + 1, "%s%s%s%s", start_marker, curr_spaces, curr_content, end_marker);
+        clrtoeol();
+        printf("%s\n", content_to_print);
+        //clear string
+        //draw whole string
+        
+        free(curr_spaces);
+        free(curr_content);
+        free(content_to_print);
+    }
+    
+    // print start content
+    curr_spaces = produce_spaces(str_content_length);
+    content_to_print = malloc(start_length1 + 1);
+    snprintf(content_to_print, start_length1 + 1, "%s%s%s", start_marker, curr_spaces, end_marker);
+    printf("%s\n", content_to_print);
+    free(curr_spaces);
     
     gettimeofday(&stop, NULL);
     printf("\ntook %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec);
