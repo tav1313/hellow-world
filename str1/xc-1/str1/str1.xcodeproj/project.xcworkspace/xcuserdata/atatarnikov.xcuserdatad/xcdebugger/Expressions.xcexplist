@@ -6,13 +6,7 @@
          contextName = "runningString:main.c">
          <PersistentStrings>
             <PersistentString
-               value = "start_s">
-            </PersistentString>
-            <PersistentString
-               value = "&amp;start_marker">
-            </PersistentString>
-            <PersistentString
-               value = "&amp;ptr1">
+               value = "content_to_print[11]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

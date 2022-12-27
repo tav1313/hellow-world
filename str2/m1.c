@@ -2,7 +2,7 @@
 
 #define SIZE 4
 
-int main (void)
+int main1 (void)
 {
     short dates[SIZE];
     short * pti;
