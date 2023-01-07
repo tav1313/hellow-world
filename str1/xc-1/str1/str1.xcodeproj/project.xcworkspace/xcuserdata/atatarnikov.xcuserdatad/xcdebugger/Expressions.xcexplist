@@ -10,5 +10,29 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "main:main.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "strings_to_run[6]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "print_hello:main.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "*(strings_to_run - 1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "activate:main.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "strings_to_run[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
