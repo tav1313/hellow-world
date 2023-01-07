@@ -12,6 +12,16 @@
 #include <sys/time.h>
 #include <string.h>
 #include <curses.h>
+#include <ncurses.h>
+#include <tcl.h>
+
+//Tcl_Interp *interp;
+//int ExtendTcl (Tcl_Interp *interp) {
+//    /*
+//    Create Tcl Commands, etc.
+//    */
+//    return TCL_OK;
+//}
 
 // running string
 // a string itself - a string to run
@@ -51,9 +61,12 @@ int running_string(char* str_content, int direction, int step, int how_long)
     char *curr_spaces;
     char *curr_content;
     char *content_to_print;
+    
             
     struct timeval stop, start;
     gettimeofday(&start, NULL);
+    
+//    sleep(3);
     
     unsigned long str_content_length = strlen(str_content);
     
@@ -76,8 +89,10 @@ int running_string(char* str_content, int direction, int step, int how_long)
         
         content_to_print = malloc(whole_content_length + 1);
         snprintf(content_to_print, whole_content_length + 1, "%s%s%s%s", start_marker, curr_content, curr_spaces, end_marker);
-        clrtoeol();
+//        clrtoeol();
         printf("%s\n", content_to_print);
+//        printf("\33[2K\r");
+//        printf("\033[A\033[2K\033[A\033[2K");
         //clear string
         //draw whole string
         
@@ -122,6 +137,31 @@ int running_string(char* str_content, int direction, int step, int how_long)
 
 int main(int argc, const char * argv[])
 {
+//    Tcl_FindExecutable(argv[0]);
+//    interp = Tcl_CreateInterp();
+//    if (Tcl_Init(interp) != TCL_OK) {
+//        return EXIT_FAILURE;
+//    }
+//    if (ExtendTcl(interp) != TCL_OK) {
+//        fprintf(stderr ,"Tcl_Init error: %s\n" ,Tcl_GetStringResult(interp));
+//        exit(EXIT_FAILURE);
+//    }
+//
+//    Tcl_Finalize();
+    
+    initscr();
+//    cbreak();
+//    noecho();
+//    clear();
+//
+    int y, x;
+//    printf("gggddd", getyx(stdscr, y, x));
+    
+    move(y, 0);
+    clrtoeol();
+    
     running_string("abcd", 1, 100, 2);
+    
+    endwin();
     return 0;
 }
