@@ -16,7 +16,7 @@ produce_spaces(short size)
 {
     // TODO: size validation
     
-    char *ret_value = (char *)malloc(size);
+    char *ret_value = malloc(sizeof *ret_value * size);
 
     for (int i = 0; i < size; i++)
     {
@@ -35,7 +35,7 @@ sub_string (const char *str,
 {
     // TODO: str, pos, length validation
     
-    char *ret_value = (char *) malloc(length + 1);
+    char *ret_value = malloc(sizeof *ret_value * (length + 1));
     memcpy(ret_value, &str[pos], length);
     ret_value[length] = '\0';
     
@@ -58,16 +58,16 @@ split_string (char *str_content)
 
     RS_ARRAY *ret_value = malloc(sizeof(RS_ARRAY));
     
-    char **parts_strings = (char** ) malloc(1 + 2 * str_content_length);
+    char **parts_strings = malloc(sizeof **parts_strings * (1 + 2 * str_content_length));
     short parts_strings_index = 0;
     
     // print start content
     curr_spaces = produce_spaces(str_content_length);
     stub_length = strlen(start_marker) + strlen(curr_spaces) + strlen(end_marker);
-    curr_content_to_print = (char *) malloc(stub_length + 1);
+    curr_content_to_print = malloc(sizeof curr_content_to_print * (stub_length + 1));
     snprintf(curr_content_to_print, stub_length + 1, "%s%s%s", start_marker, curr_spaces, end_marker);
     printf("%s\n", curr_content_to_print);
-    parts_strings[parts_strings_index] = (char *) malloc(strlen(curr_content_to_print) + 1);
+    parts_strings[parts_strings_index] = malloc(sizeof(char*) * (strlen(curr_content_to_print) + 1));
     strcpy(parts_strings[parts_strings_index++], curr_content_to_print);
     
     free(curr_spaces);
@@ -82,10 +82,10 @@ split_string (char *str_content)
         unsigned long whole_content_length = strlen(start_marker) + strlen(curr_content) +
                                              strlen(curr_spaces)  + strlen(end_marker);
         
-        curr_content_to_print = (char *) malloc(whole_content_length + 1);
+        curr_content_to_print = malloc(sizeof curr_content_to_print * (whole_content_length + 1));
         snprintf(curr_content_to_print, whole_content_length + 1, "%s%s%s%s", start_marker, curr_content, curr_spaces, end_marker);
         printf("%s\n", curr_content_to_print);
-        parts_strings[parts_strings_index] = (char *) malloc(strlen(curr_content_to_print) + 1);
+        parts_strings[parts_strings_index] = malloc(sizeof(char *) * (strlen(curr_content_to_print) + 1));
         strcpy(parts_strings[parts_strings_index++], curr_content_to_print);
 
         free(curr_spaces);
@@ -102,10 +102,10 @@ split_string (char *str_content)
         unsigned long whole_content_length = strlen(start_marker) + strlen(curr_content) +
                                              strlen(curr_spaces)  + strlen(end_marker);
         
-        curr_content_to_print = (char *) malloc(whole_content_length + 1);
+        curr_content_to_print = malloc(sizeof curr_content_to_print * (whole_content_length + 1));
         snprintf(curr_content_to_print, whole_content_length + 1, "%s%s%s%s", start_marker, curr_spaces, curr_content, end_marker);
         printf("%s\n", curr_content_to_print);
-        parts_strings[parts_strings_index] = (char *) malloc(strlen(curr_content_to_print) + 1);
+        parts_strings[parts_strings_index] = malloc(sizeof(char*) * (strlen(curr_content_to_print) + 1));
         strcpy(parts_strings[parts_strings_index++], curr_content_to_print);
         
         free(curr_spaces);
@@ -115,10 +115,10 @@ split_string (char *str_content)
     
     // print start content
     curr_spaces = produce_spaces(str_content_length);
-    curr_content_to_print = (char *) malloc(stub_length + 1);
+    curr_content_to_print = malloc(sizeof *curr_content_to_print * (stub_length + 1));
     snprintf(curr_content_to_print, stub_length + 1, "%s%s%s", start_marker, curr_spaces, end_marker);
     printf("%s\n", curr_content_to_print);
-    parts_strings[parts_strings_index] = (char *) malloc(strlen(curr_content_to_print) + 1);
+    parts_strings[parts_strings_index] = malloc(sizeof(char *) * (strlen(curr_content_to_print) + 1));
     strcpy(parts_strings[parts_strings_index], curr_content_to_print);
     free(curr_spaces);
     free(curr_content_to_print);
