@@ -85,6 +85,8 @@ int
 main (int argc,
       char **argv)
 {
+    // TODO: !! the app is unstable for some reason, it throws exceptions 
+    // when trying to run or free pointers....
     GtkApplication *app;
     int status;
 
