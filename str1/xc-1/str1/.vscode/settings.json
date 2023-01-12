@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"makefile2": "makefile"
+		"makefile2": "makefile",
+		"Makefile11": "makefile"
 	}
 }
