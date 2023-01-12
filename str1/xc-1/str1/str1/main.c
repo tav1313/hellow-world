@@ -12,6 +12,7 @@
 // set timer callback and pass value to be shown as a label
 // running_string function produces an array of strings to be shown and after that we just show the values by the timer
 
+extern int errno;
 RS_ARRAY* str_vector;
 char **ptr1;
 
@@ -49,6 +50,7 @@ activate (GtkApplication *app,
     // TODO: check - on how to pass a pointer, update it within a function
     // check_ptr1(&ptr1);
 
+//    sleep(2);
     window = gtk_application_window_new (app);
     gtk_window_set_title (GTK_WINDOW (window), "Window");
     gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
@@ -61,6 +63,7 @@ activate (GtkApplication *app,
 
 //    g_timeout_add(200, (GSourceFunc) time_handler, (gpointer) window);
 
+    sleep(2);
     gtk_window_present (GTK_WINDOW (window));
 }
 
@@ -69,7 +72,13 @@ shutdown (GtkApplication *app,
           gpointer user_data)
 {
     g_print("I'm done\n");
-    free_rs(str_vector);
+    if (str_vector == NULL)
+    {
+        fprintf(stderr, "Can't release NULL pointer for std_vector");
+    } else
+    {
+        free_rs(str_vector);
+    }
 }
 
 int
@@ -83,6 +92,7 @@ main (int argc,
     g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
     g_signal_connect (app, "shutdown", G_CALLBACK (shutdown), NULL);
 
+//    sleep(2);
     status = g_application_run (G_APPLICATION (app), argc, argv);
     g_object_unref (app);
     

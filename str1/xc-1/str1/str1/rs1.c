@@ -135,6 +135,7 @@ split_string (char *str_content)
 void 
 free_rs(RS_ARRAY *ptr)
 {
+    // TODO: validate 'ptr'
     for (int i = 0; i < ptr->size; i++)
      {
          free(ptr->array[i]);

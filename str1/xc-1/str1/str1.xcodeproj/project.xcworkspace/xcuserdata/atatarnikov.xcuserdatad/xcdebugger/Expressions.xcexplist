@@ -16,6 +16,9 @@
             <PersistentString
                value = "strings_to_run[6]">
             </PersistentString>
+            <PersistentString
+               value = "app == NULL">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
