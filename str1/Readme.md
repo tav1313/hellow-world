@@ -3,3 +3,6 @@ For macos users: make sure you've installed 'gmake' (gnu make utility), otherwis
 will have failed).
 To clean up use `gmake clean`
 To run use `gmake` or `gmake run`
+
+To make sure, .vscode settings are corresponding to your host, run `pkg-config --libs gtk4`,
+`pkg-config --cflags-only-I gtk4` and copy-paste them into settings file where applicable

@@ -63,7 +63,7 @@ activate (GtkApplication *app,
 
 //    g_timeout_add(200, (GSourceFunc) time_handler, (gpointer) window);
 
-    sleep(2);
+    // sleep(2);
     gtk_window_present (GTK_WINDOW (window));
 }
 
