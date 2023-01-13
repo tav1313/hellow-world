@@ -1,6 +1,6 @@
 CC = gcc-12
 CFLAGS = -fPIC
-VPATH = str1:build
+VPATH = src:build
 BUILD_DIR = build
 BIN_DIR = $(BUILD_DIR)/bin
 
