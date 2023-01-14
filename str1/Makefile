@@ -1,17 +1,23 @@
+# Make standard vars
 CC = gcc-12
 CFLAGS = -fPIC
 VPATH = src:build
+
+# Paths
 BUILD_DIR = build
 BIN_DIR = $(BUILD_DIR)/bin
 
+# Libs
+LIBS = gtk4
+
 # Specify paths to headers
-INCLUDES = $(shell pkg-config --cflags gtk4)
+INCLUDES = $(shell pkg-config --cflags $(LIBS))
 
 # Specify paths to the libraries
-LDFLAGS = $(shell pkg-config --libs-only-L gtk4)
+LDFLAGS = $(shell pkg-config --libs-only-L $(LIBS))
 
 # Specify the link libraries
-LLIBS = $(shell pkg-config --libs-only-l gtk4)
+LLIBS = $(shell pkg-config --libs-only-l $(LIBS))
 
 # TODO: add the rule to compile ALL .c files
 # and pass them as a prerequsites to build the output executable
