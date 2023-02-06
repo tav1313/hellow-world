@@ -5,6 +5,9 @@ Make sure to install `gtk4` lib
 For macos users: make sure you've installed *gmake* (gnu make utility), otherwise the build won't work(directories creation 
 will have failed).
 
+// TODO: current state of the app is working only at MacOS, it should be compiled and on Windows and Linux
+For ubuntu users: change gtk lib name and compiler(CC) name in the Makefile in accordance with your host system
+
 To clean up use `gmake clean`
 To build use `gmake`, for a run use `gmake run`
 
