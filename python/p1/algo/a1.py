@@ -1,6 +1,8 @@
+import timeit
 from functools import partial
 import time
 import sort
+import search
 from list_ops import generate_list, is_list_sorted
 
 
@@ -16,11 +18,14 @@ def set_time(flag):
     return time.process_time() if flag else time.time()
 
 
-def measure_time1(func, is_proc_time=False):
+def measure_time1(func, is_proc_time=False, count=1):
     print(f'++++++++ {measure_time1.__qualname__}')
 
     start_time = set_time(is_proc_time)
-    func_ret_value = func()
+
+    for i in range(count):
+        func_ret_value = func()
+
     end_time = set_time(is_proc_time)
 
     if isinstance(func_ret_value, list):
@@ -28,7 +33,8 @@ def measure_time1(func, is_proc_time=False):
     elif func_ret_value:
         print(f'func_ret_value: {func_ret_value}')
 
-    print(f'time passed: {end_time - start_time}')
+    if count != 0:
+        print(f'time passed: {(end_time - start_time) / count}')
     print('--------\n')
 
 
@@ -39,6 +45,9 @@ if __name__ == '__main__':
     # measure_time1(partial(sort_bubble1, generate_list(10 * 1000)), True)
     # measure_time1(partial(sort_bubble1, generate_list(10 * 1000)))
     # measure_time1(partial(sort.sort_bubble2, generate_list(10 * 1000)), True)
-    # measure_time1(lambda: search_linear(generate_list(10 * 1000), 55))
-    measure_time1(lambda: sort.sort_shaker1(generate_list(10 * 1000)))
-    measure_time1(lambda: sort.comb_sort(generate_list(10 * 1000)))
+    # n = 1
+    # timeit_result = timeit.timeit(stmt=lambda: search.search_linear(generate_list(10 * 1000), 55), number=n)
+    # print(f'timeit_result {timeit_result / n}\n')
+    measure_time1(lambda: search.search_linear(generate_list(10 * 1000), 55), count=2)
+    # measure_time1(lambda: sort.sort_shaker1(generate_list(10 * 1000)))
+    # measure_time1(lambda: sort.comb_sort(generate_list(10 * 1000)))
