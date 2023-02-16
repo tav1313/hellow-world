@@ -70,12 +70,12 @@ def comb_sort(lst):
 
         flag, p = False, 0
 
-        while p < n - step:
+        while p + step < n:
             if lst[p] > lst[p + step]:
                 lst[p], lst[p + step] = lst[p + step], lst[p]
                 flag = True
-                
-            p += step
+
+            p += 1
 
     return lst
 
