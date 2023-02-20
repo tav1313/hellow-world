@@ -55,6 +55,6 @@ if __name__ == '__main__':
     # timeit_result = timeit.timeit(stmt=lambda: search.search_linear(generate_list(10 * 1000), 55), number=n)
     # print(f'timeit_result {timeit_result / n}\n')
     # measure_time1(lambda: search.search_linear(generate_list(10 * 1000), 55), dscr='search_linear', count=2)
-    # measure_time1(lambda: sort.sort_shaker1(generate_list(10 * 1000)), count=1)
+    # measure_time1(lambda: sort.sort_shaker1(generate_list(10 * 1000)), dscr='sort_shaker1', count=1)
     measure_time1(lambda: sort.comb_sort(generate_list(10 * 1000)), dscr='comb_sort')
     measure_time1(lambda: sort.insert_sort(generate_list(10 * 1000)), dscr='insert_sort')
