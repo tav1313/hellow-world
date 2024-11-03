@@ -1,3 +1,5 @@
+from a1 import measure_time1
+
 # SORT
 def sort_bubble(lst):
     for i in range(len(lst) - 1):
